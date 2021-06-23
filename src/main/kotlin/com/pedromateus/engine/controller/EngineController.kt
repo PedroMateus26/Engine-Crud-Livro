@@ -8,7 +8,7 @@ import io.micronaut.http.annotation.Get
 import org.slf4j.LoggerFactory
 import java.util.*
 
-@Controller("/busca.livros")
+@Controller("/busca/livros")
 class EngineController(private val engineService: EngineService) {
 
     private val logger=LoggerFactory.getLogger(this::class.java)
