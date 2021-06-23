@@ -1,0 +1,14 @@
+micronaut:
+  application:
+    name: engineCrudeLivro
+  server:
+    port: 8082
+
+cassandra:
+  default:
+    basic:
+      contact-points:
+        - "127.0.0.1:9042"
+      session-keyspace: estoque
+      load-balancing-policy:
+        local-datacenter: datacenter1
