@@ -1,6 +1,6 @@
-package com.pedromateus.engine.repository
+package com.pedromateus.engine.core.ports
 
-import com.pedromateus.engine.controller.dto.LivroEvent
+import com.pedromateus.engine.entrypoint.controller.dto.LivroEvent
 import java.util.*
 
 interface BuscaLivroRepository {

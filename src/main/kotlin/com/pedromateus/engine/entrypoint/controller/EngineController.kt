@@ -1,7 +1,7 @@
-package com.pedromateus.engine.controller
+package com.pedromateus.engine.entrypoint.controller
 
-import com.pedromateus.engine.controller.dto.LivroEvent
-import com.pedromateus.engine.service.EngineService
+import com.pedromateus.engine.entrypoint.controller.dto.LivroEvent
+import com.pedromateus.engine.core.ports.EngineService
 import io.micronaut.http.HttpResponse
 import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get

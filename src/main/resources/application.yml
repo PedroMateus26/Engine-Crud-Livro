@@ -12,3 +12,8 @@ cassandra:
       session-keyspace: estoque
       load-balancing-policy:
         local-datacenter: datacenter1
+
+endpoints:
+  health:
+    enabled: true
+    details-visible: ANONYMOUS

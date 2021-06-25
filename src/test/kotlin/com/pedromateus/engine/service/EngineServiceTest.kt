@@ -1,11 +1,10 @@
-package com.pedromateus.engine.controller
+package com.pedromateus.engine.service
 
-import com.pedromateus.engine.core.ports.EngineService
-import com.pedromateus.engine.entrypoint.controller.EngineController
+import com.pedromateus.engine.core.ports.BuscaLivroRepository
+import com.pedromateus.engine.core.service.EngineServiceImpl
 import com.pedromateus.engine.entrypoint.controller.dto.LivroEvent
 import com.pedromateus.engine.entrypoint.controller.dto.LivroRequest
 import io.kotest.core.spec.style.AnnotationSpec
-import io.kotest.core.spec.style.AnnotationSpec.*
 import io.kotest.matchers.shouldBe
 import io.micronaut.test.extensions.kotest.annotation.MicronautTest
 import io.mockk.every
@@ -13,9 +12,10 @@ import io.mockk.mockk
 import java.util.*
 
 @MicronautTest
-class EngineControllerTest:AnnotationSpec() {
-    var service= mockk<EngineService>()
-    val controller= EngineController(service)
+class EngineServiceTest:AnnotationSpec() {
+
+    val repository= mockk<BuscaLivroRepository>()
+    val service=EngineServiceImpl(repository)
 
     lateinit var livroEvent: LivroEvent
     lateinit var list: List<LivroEvent>
@@ -28,19 +28,19 @@ class EngineControllerTest:AnnotationSpec() {
 
     @Test
     fun `deve realizar um consulta pelo id`(){
-        every { service.findById(any()) } answers { livroEvent }
-        val result=controller.findById(livroEvent.id!!)
+        every { repository.findById(any()) } answers { livroEvent }
+        val result=service.findById(livroEvent.id!!)
 
-        result.body() shouldBe livroEvent
+        result shouldBe livroEvent
 
     }
 
     @Test
     fun `deve realizar um consulta e buscat todos os livros cadastrados`(){
-        every { service.findAllLivros() } answers { list }
-        val result=controller.findAllLivro()
+        every { repository.findAllLivros() } answers { list }
+        val result=service.findAllLivros()
 
-        result.body() shouldBe list
+        result shouldBe list
 
     }
 }

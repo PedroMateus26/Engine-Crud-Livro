@@ -1,4 +1,4 @@
-package com.pedromateus.engine.controller.dto
+package com.pedromateus.engine.entrypoint.controller.dto
 
 import java.util.*
 

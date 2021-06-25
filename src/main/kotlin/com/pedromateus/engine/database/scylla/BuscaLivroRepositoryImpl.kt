@@ -1,12 +1,11 @@
-package com.pedromateus.engine.repository
+package com.pedromateus.engine.database.scylla
 
 import com.datastax.oss.driver.api.core.CqlSession
 import com.datastax.oss.driver.api.core.cql.Row
 import com.datastax.oss.driver.api.querybuilder.QueryBuilder
-import com.pedromateus.engine.controller.dto.LivroEvent
-import com.pedromateus.engine.controller.dto.LivroRequest
-import io.micronaut.http.annotation.Controller
-import io.micronaut.http.client.annotation.Client
+import com.pedromateus.engine.core.ports.BuscaLivroRepository
+import com.pedromateus.engine.entrypoint.controller.dto.LivroEvent
+import com.pedromateus.engine.entrypoint.controller.dto.LivroRequest
 import org.slf4j.LoggerFactory
 import java.util.*
 import javax.inject.Singleton
