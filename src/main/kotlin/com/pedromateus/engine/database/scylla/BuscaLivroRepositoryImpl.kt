@@ -3,19 +3,18 @@ package com.pedromateus.engine.database.scylla
 import com.datastax.oss.driver.api.core.CqlSession
 import com.datastax.oss.driver.api.core.cql.Row
 import com.datastax.oss.driver.api.querybuilder.QueryBuilder
-import com.pedromateus.engine.core.ports.BuscaLivroRepository
-import com.pedromateus.engine.entrypoint.controller.dto.LivroEvent
-import com.pedromateus.engine.entrypoint.controller.dto.LivroRequest
+import com.pedromateus.engine.core.ports.BuscaLivroRepositoryPort
+import com.pedromateus.engine.database.entity.LivroEntity
 import org.slf4j.LoggerFactory
 import java.util.*
 import javax.inject.Singleton
 
 @Singleton
-class BuscaLivroRepositoryImpl(private val cqlSession: CqlSession) : BuscaLivroRepository {
+class BuscaLivroRepositoryImpl(private val cqlSession: CqlSession) : BuscaLivroRepositoryPort {
 
     private val logger=LoggerFactory.getLogger(this::class.java)
 
-    override fun findById(id: UUID): LivroEvent = converteRowParaLivroEvent(
+    override fun findById(id: UUID): LivroEntity = converteRowParaLivroEvent(
         cqlSession.execute(
             QueryBuilder.selectFrom("prateleira")
                 .all()
@@ -25,7 +24,7 @@ class BuscaLivroRepositoryImpl(private val cqlSession: CqlSession) : BuscaLivroR
         ).one()!!
     )
 
-    override fun findAllLivros(): List<LivroEvent> {
+    override fun findAllLivros(): List<LivroEntity> {
         val rs=cqlSession.execute(QueryBuilder.selectFrom("prateleira").all().build())
         val list=rs.map {
             converteRowParaLivroEvent(it)
@@ -37,9 +36,8 @@ class BuscaLivroRepositoryImpl(private val cqlSession: CqlSession) : BuscaLivroR
     }
 
 
-    private fun converteRowParaLivroEvent(row: Row) = LivroEvent(
-        id = row.getUuid("id"),
-        LivroRequest(titulo = row.getString("titulo")!!, autor = row.getString("autor")!!)
-    )
+    private fun converteRowParaLivroEvent(row: Row) =
+        LivroEntity(id = row.getUuid("id"),titulo = row.getString("titulo")!!, autor = row.getString("autor")!!)
+
 
 }

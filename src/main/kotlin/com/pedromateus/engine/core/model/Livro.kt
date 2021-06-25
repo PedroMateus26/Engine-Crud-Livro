@@ -1,8 +1,8 @@
-package com.pedromateus.engine.entrypoint.controller.dto
+package com.pedromateus.engine.core.model
 
 import java.util.*
 
-class LivroEvent(
+class Livro(
     val id: UUID?,
     val titulo:String?,
     val autor:String?
