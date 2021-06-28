@@ -28,7 +28,7 @@ class EngineControllerTest:AnnotationSpec() {
     @Test
     fun `deve realizar um consulta pelo id`(){
         every { service.findById(any()) } answers { livro }
-        val livroEvent=LivroConverter.converteLivroParaLivroEvent(livro)
+        val livroEvent=LivroConverter.converteLivroParaLivroDTO(livro)
         val result=controller.findById(livro.id!!)
 
         result.body().id shouldBe livroEvent.id
@@ -40,7 +40,7 @@ class EngineControllerTest:AnnotationSpec() {
     @Test
     fun `deve realizar um consulta e buscat todos os livros cadastrados`(){
         every { service.findAllLivros() } answers { list }
-        val listEvent=list.map { LivroConverter.converteLivroParaLivroEvent(it) }
+        val listEvent=list.map { LivroConverter.converteLivroParaLivroDTO(it) }
         val result=controller.findAllLivro()
 
         result.body().get(0).id shouldBe listEvent.get(0).id

@@ -4,7 +4,7 @@ import com.pedromateus.engine.core.mapper.LivroConverter
 import com.pedromateus.engine.core.model.Livro
 import com.pedromateus.engine.core.ports.EngineServicePort
 import com.pedromateus.engine.core.ports.BuscaLivroRepositoryPort
-import java.util.*
+import java.util.UUID
 import javax.inject.Singleton
 
 @Singleton

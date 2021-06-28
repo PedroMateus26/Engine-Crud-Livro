@@ -3,6 +3,9 @@ micronaut:
     name: engineCrudeLivro
   server:
     port: 8082
+  cors:
+    enable: true
+
 
 cassandra:
   default:

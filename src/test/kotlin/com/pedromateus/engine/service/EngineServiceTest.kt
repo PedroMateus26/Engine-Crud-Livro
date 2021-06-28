@@ -4,7 +4,6 @@ import com.pedromateus.engine.core.mapper.LivroConverter
 import com.pedromateus.engine.core.ports.BuscaLivroRepositoryPort
 import com.pedromateus.engine.core.service.EngineServicePortImpl
 import com.pedromateus.engine.database.entity.LivroEntity
-import com.pedromateus.engine.entrypoint.controller.dto.LivroEvent
 import io.kotest.core.spec.style.AnnotationSpec
 import io.kotest.matchers.shouldBe
 import io.micronaut.test.extensions.kotest.annotation.MicronautTest

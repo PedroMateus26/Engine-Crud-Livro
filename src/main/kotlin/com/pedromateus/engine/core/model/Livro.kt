@@ -1,6 +1,6 @@
 package com.pedromateus.engine.core.model
 
-import java.util.*
+import java.util.UUID
 
 class Livro(
     val id: UUID?,

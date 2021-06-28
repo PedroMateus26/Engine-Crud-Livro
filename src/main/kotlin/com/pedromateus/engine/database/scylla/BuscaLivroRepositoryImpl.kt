@@ -6,7 +6,7 @@ import com.datastax.oss.driver.api.querybuilder.QueryBuilder
 import com.pedromateus.engine.core.ports.BuscaLivroRepositoryPort
 import com.pedromateus.engine.database.entity.LivroEntity
 import org.slf4j.LoggerFactory
-import java.util.*
+import java.util.UUID
 import javax.inject.Singleton
 
 @Singleton
