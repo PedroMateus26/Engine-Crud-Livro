@@ -22,7 +22,7 @@ class BuscaLivroRepositoryImpl(private val cqlSession: CqlSession) : BuscaLivroR
                 .whereColumn("id")
                 .isEqualTo(QueryBuilder.literal(id))
                 .build()
-        ).first()!!
+        ).one()!!
     )
 
     override fun findAllLivros(): List<LivroEntity> {
@@ -33,7 +33,7 @@ class BuscaLivroRepositoryImpl(private val cqlSession: CqlSession) : BuscaLivroR
         return list
     }
 
-    fun converteRowParaLivroEvent(row: Row) =
+    private fun converteRowParaLivroEvent(row: Row) =
         LivroEntity(id = row.getUuid("id"), titulo = row.getString("titulo")!!, autor = row.getString("autor")!!)
 
 }
